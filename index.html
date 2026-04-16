@@ -3,140 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>버추얼 3D 캐릭터 제작 커미션</title>
+    <title>버추얼 3D 캐릭터 제작 커미션 - 멍게</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #ff8fa3;
-            --secondary-pink: #ffb3c1;
-            --accent-pink: #ff6b8a;
-            --vrc-purple: #9575cd;
-            --bg-color: #fff5f6;
-            --card-shadow: 0 10px 30px rgba(255, 143, 163, 0.12);
-            --hover-shadow: 0 20px 40px rgba(255, 143, 163, 0.25);
+            --primary-pink: #ff85a2;
+            --light-pink: #fff0f3;
+            --deep-pink: #ff4d6d;
+            --primary-purple: #9d8df1;
+            --light-purple: #f3f0ff;
+            --text-color: #444;
+            --shadow: 0 10px 30px rgba(255, 133, 162, 0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: var(--bg-color);
-            color: #444;
+            background-color: #fff;
+            color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* 공통 애니메이션 클래스 */
-        .hover-bounce {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .hover-bounce:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--hover-shadow) !important;
-        }
-
-        /* 헤더 섹션 */
-        .header {
-            width: 100%;
-            background: linear-gradient(135deg, #ff8fa3 0%, #ffb3c1 40%, #ffd6dc 70%, #ffe8ec 100%);
-            padding: 80px 20px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .header-badge-group {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            height: 350px;
             display: flex;
-            gap: 8px;
+            flex-direction: column;
             justify-content: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
-        .badge {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .header h1 {
-            font-size: clamp(28px, 6vw, 48px);
-            font-weight: 900;
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 10px;
+            font-weight: 900;
             text-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .header p {
-            font-size: clamp(14px, 2vw, 18px);
-            opacity: 0.95;
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
-        /* 컨테이너 */
+        /* Container */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
         }
 
-        /* 섹션 타이틀 */
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            padding: 15px 25px;
-            border-radius: 20px;
-            color: #fff;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(255, 143, 163, 0.2);
+        /* Section Styling */
+        section {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: 900;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-pink);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-pink);
+            padding-bottom: 10px;
+            cursor: pointer;
         }
 
-        /* 카드 그리드 */
-        .grid {
+        .section-title .eng {
+            font-size: 0.9rem;
+            color: #bbb;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+
+        .toggle-btn {
+            font-style: normal;
+            font-size: 0.75rem;
+            background: var(--light-pink);
+            color: var(--primary-pink);
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        /* Introduction */
+        .intro-text {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+            word-break: keep-all;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .intro-text p {
+            margin-bottom: 10px;
+        }
+
+        /* Must Read */
+        .must-read-list {
+            list-style: none;
+        }
+
+        .must-read-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 18px;
+            background: var(--light-pink);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .must-read-item:hover {
+            background: #ffe5eb;
+        }
+
+        .must-read-number {
+            background: var(--primary-pink);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 900;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Toggle Menu Styling */
+        .toggle-content {
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            max-height: 2500px; /* Default expanded */
+        }
+
+        .toggle-content.collapsed {
+            max-height: 0;
+        }
+
+        /* Price Grid */
+        .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 50px;
         }
 
         .price-card {
-            background: #fff;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: 2px solid #fff;
+            border: 2px solid transparent;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .card-header {
-            padding: 25px;
+        .price-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 133, 162, 0.2);
+        }
+
+        .price-card.vsf { border-color: var(--light-pink); }
+        .price-card.vrc { border-color: var(--light-purple); }
+
+        .price-header {
+            padding: 20px;
+            color: white;
             text-align: center;
-            color: #fff;
+            font-weight: 900;
+            font-size: 1.1rem;
         }
 
-        .card-header.vsf { background: linear-gradient(135deg, #ffb3c1, #ff8fa3); }
-        .card-header.vrc { background: linear-gradient(135deg, #b39ddb, #9575cd); }
+        .vsf .price-header { background: var(--primary-pink); }
+        .vrc .price-header { background: var(--primary-purple); }
 
-        .card-header .type { font-size: 14px; opacity: 0.9; margin-bottom: 5px; }
-        .card-header .main-price { font-size: 32px; font-weight: 900; }
-
-        .price-list {
+        .price-body {
             padding: 25px;
-            list-style: none;
         }
 
         .price-item {
@@ -144,221 +210,342 @@
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px dashed #eee;
-            font-size: 14px;
+            font-size: 0.95rem;
         }
 
         .price-item:last-child { border-bottom: none; }
-        .price-item .label { color: #666; }
-        .price-item .val { font-weight: 700; color: var(--accent-pink); }
-        .vrc .val { color: var(--vrc-purple); }
 
-        /* 기타 섹션 */
-        .etc-grid {
+        .price-value { font-weight: 900; color: var(--deep-pink); }
+        .vrc .price-value { color: var(--primary-purple); }
+
+        /* Work Environment */
+        .work-env-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
         }
 
-        .etc-card {
-            background: #fff;
+        .env-item {
+            display: flex;
+            align-items: center;
             padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
+            background: #fdfdfd;
+            border-radius: 25px;
+            border: 1px solid #f0f0f0;
+            transition: 0.3s;
         }
 
-        .etc-card .icon { font-size: 24px; margin-bottom: 10px; }
-        .etc-card .name { font-size: 13px; font-weight: 700; margin-bottom: 5px; color: #777; }
-        .etc-card .price { font-size: 20px; font-weight: 900; color: var(--accent-pink); }
-
-        /* 복사 버튼 섹션 */
-        .copy-section {
+        .env-item:hover {
             background: #fff;
-            padding: 40px 20px;
-            border-radius: 30px;
+            border-color: var(--primary-pink);
+            transform: translateY(-5px);
+        }
+
+        .env-icon {
+            width: 45px;
+            height: 45px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+
+        .env-info strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .env-info small {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* Copy Button Section */
+        .copy-section {
             text-align: center;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 60px;
-            border: 2px dashed var(--secondary-pink);
+            margin: 60px 0;
+            background: var(--light-pink);
+            padding: 40px;
+            border-radius: 30px;
         }
 
         .copy-btn {
-            background: var(--accent-pink);
-            color: #fff;
+            background: var(--primary-pink);
+            color: white;
             border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 18px;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             font-weight: 900;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 107, 138, 0.3);
-            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4);
+            transition: 0.3s;
         }
 
         .copy-btn:hover {
-            background: #ff4f73;
-            transform: scale(1.05);
+            background: var(--deep-pink);
+            transform: scale(1.05) rotate(-1deg);
         }
 
-        .copy-btn:active { transform: scale(0.95); }
-
-        /* 토스트 알림 */
+        /* Toast Message */
         #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
+            visibility: hidden;
+            min-width: 280px;
+            background-color: rgba(0,0,0,0.85);
             color: #fff;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 14px;
-            display: none;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px 30px;
+            position: fixed;
             z-index: 1000;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* 푸터 */
-        .footer {
-            background: var(--primary-pink);
-            color: #fff;
-            padding: 60px 20px;
-            text-align: center;
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 40px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 40px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(to bottom, #fff, var(--light-pink));
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .footer h2 { color: var(--primary-pink); margin-bottom: 15px; font-weight: 900; }
+        .footer p { color: #888; }
 
         @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-            .header { padding: 60px 20px; }
+            section { padding: 30px 20px; }
+            .hero { height: 280px; }
+            .price-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 헤더 -->
-    <header class="header">
-        <div class="header-badge-group">
-            <span class="badge">Virtual 3D Character</span>
-            <span class="badge">VRChat</span>
-            <span class="badge">VSeeFace</span>
-        </div>
-        <h1>버추얼 3D 캐릭터 제작</h1>
-        <p>Blender & Unity 기반 고퀄리티 아바타 커미션</p>
-    </header>
+<div class="hero">
+    <h1>버추얼 3D 캐릭터 제작</h1>
+    <p>Blender · Unity · VRChat · VSeeFace</p>
+</div>
 
-    <div class="container">
-        
-        <!-- VSF 섹션 -->
-        <div class="section-header">
-            <div class="section-title">🎀 VSF (방송용)</div>
-            <div style="font-size: 11px; opacity: 0.8;">VSeeFace Optimized</div>
+<div class="container">
+    <!-- Introduction -->
+    <section id="intro">
+        <div class="section-title">소개 <span class="eng">Introduce</span></div>
+        <div class="intro-text">
+            <p>VseeFace 및 VRChat 아바타 커미션 작가 <strong>멍게</strong>입니다.</p>
+            <p>기본적인 의상·헤어 뚜따부터 VSF 방송용 세팅, VRChat 최적화 작업까지 폭넓은 서비스를 제공합니다.</p>
+            <p>항상 작업 속도와 퀄리티 사이의 균형을 중시하며,</p>
+            <p>신청자분들의 피드백을 적극 반영하여 만족스러운 결과물을 보여드리겠습니다.</p>
         </div>
+    </section>
 
-        <div class="grid">
-            <div class="price-card hover-bounce">
-                <div class="card-header vsf">
-                    <div class="type">전신 풀 패키지</div>
-                    <div class="main-price">11.5 <span style="font-size:16px; font-weight:400;">만원</span></div>
+    <!-- Must Read -->
+    <section id="notice">
+        <div class="section-title">필독사항 <span class="eng">Must-Read</span></div>
+        <ul class="must-read-list">
+            <li class="must-read-item">
+                <span class="must-read-number">★</span>
+                <div>의뢰 전 반드시 읽어주세요! 미숙지로 인한 불이익은 책임지지 않습니다.</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">1</span>
+                <div>문의 이후 커미션 신청해주세요!</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">2</span>
+                <div>기본 수정 횟수는 2회입니다. (중요)</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">3</span>
+                <div>VRC 등급이 New User인지 확인해주세요.</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">4</span>
+                <div>컨펌과 수정횟수는 별개입니다! - 컨펌은 횟수제한 없습니다</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">5</span>
+                <div>아바타 및 파츠는 양측 구매가 원칙입니다.</div>
+                <div>보유 아바타 : Maya, Moe, Airi</div>
+                <div>미보유 상품은 부스 기프트로 주셔야 합니다.</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">6</span>
+                <div>작업 종류후 2주후 커미션 파일 삭제합니다. - 2주내 재신청시 기본금액 X</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">7</span>
+                <div>아바타 및 파츠의 상업적/비상업적 부분을 꼭! 확인해주세요. (중요)</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">8</span>
+                <div>필독사항을 읽지않고 생긴 불이익은 책임지지않습니다.</div>
+            </li>
+            <li class="must-read-item">
+                <span class="must-read-number">9</span>
+                <div>신청자측 소통이 원활하지 않을시 작업기간이 길어집니다.</div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Price Section - VSF -->
+    <section>
+        <div class="section-title" onclick="toggleSection('vsf-content', this)">
+            <div>VSF (방송용) <span class="eng">VSeeFace Optimized</span></div>
+            <span class="toggle-btn">클릭하여 토글</span>
+        </div>
+        <div id="vsf-content" class="toggle-content">
+            <div class="price-grid">
+                <div class="price-card vsf">
+                    <div class="price-header">패키지 및 기본 작업</div>
+                    <div class="price-body">
+                        <div class="price-item"><span>전신 풀 패키지</span> <span class="price-value">11.5만</span></div>
+                        <div class="price-item"><span>기존 아바타 수정</span> <span class="price-value">5.5만</span></div>
+                    </div>
                 </div>
-                <ul class="price-list">
-                    <li class="price-item"><span class="label">기본 아바타 수정</span><span class="val">5.5만</span></li>
-                    <li class="price-item"><span class="label">옷 추가</span><span class="val">4.5만</span></li>
-                    <li class="price-item"><span class="label">헤어 추가</span><span class="val">3.5만</span></li>
-                    <li class="price-item"><span class="label">악세서리 추가</span><span class="val">2.0만</span></li>
-                    <li class="price-item"><span class="label">비전용 뚜따</span><span class="val">7.0만</span></li>
-                    <li class="price-item"><span class="label">텍스처 추가</span><span class="val">0.7만</span></li>
-                    <li class="price-item"><span class="label">온오프 추가</span><span class="val">1.5만</span></li>
-                    <li class="price-item"><span class="label">성형 쉐이프키</span><span class="val">3.0만</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- VRC 섹션 -->
-        <div class="section-header" style="background: linear-gradient(135deg, #b39ddb, #9575cd);">
-            <div class="section-title">🎮 VRC (게임용)</div>
-            <div style="font-size: 11px; opacity: 0.8;">VRChat</div>
-        </div>
-
-        <div class="grid">
-            <div class="price-card hover-bounce vrc">
-                <div class="card-header vrc">
-                    <div class="type">전신 풀 패키지</div>
-                    <div class="main-price">7.0 <span style="font-size:16px; font-weight:400;">만원</span></div>
+                <div class="price-card vsf">
+                    <div class="price-header">추가 옵션</div>
+                    <div class="price-body">
+                        <div class="price-item"><span>옷 추가</span> <span class="price-value">4.5만</span></div>
+                        <div class="price-item"><span>헤어 추가</span> <span class="price-value">3.5만</span></div>
+                        <div class="price-item"><span>악세사리 추가</span> <span class="price-value">2.0만</span></div>
+                        <div class="price-item"><span>비전용 뚜따</span> <span class="price-value">7.0만</span></div>
+                        <div class="price-item"><span>텍스처 추가</span> <span class="price-value">0.7만</span></div>
+                        <div class="price-item"><span>온오프 추가</span> <span class="price-value">1.5만</span></div>
+                        <div class="price-item"><span>성형 쉐이프키</span> <span class="price-value">3.0만</span></div>
+                    </div>
                 </div>
-                <ul class="price-list">
-                    <li class="price-item"><span class="label">기본 아바타 수정</span><span class="val">4.5만</span></li>
-                    <li class="price-item"><span class="label">옷 추가</span><span class="val">4.5만</span></li>
-                    <li class="price-item"><span class="label">헤어 추가</span><span class="val">3.0만</span></li>
-                    <li class="price-item"><span class="label">악세서리 추가</span><span class="val">1.5만</span></li>
-                    <li class="price-item"><span class="label">비전용 뚜따</span><span class="val">7.0만</span></li>
-                    <li class="price-item"><span class="label">텍스처 추가</span><span class="val">0.7만</span></li>
-                    <li class="price-item"><span class="label">온오프 추가</span><span class="val">1.5만</span></li>
-                    <li class="price-item"><span class="label">성형 쉐이프키</span><span class="val">3.0만</span></li>
-                    <li class="price-item"><span class="label">플라이 기능 추가</span><span class="val">1.5만</span></li>
-                    <li class="price-item"><span class="label">투명 기능 추가</span><span class="val">3.0만</span></li>
-                </ul>
             </div>
         </div>
+    </section>
 
-        <!-- 기타 섹션 -->
-        <div class="section-header">
-            <div class="section-title">✨ 기타 옵션</div>
-            <div style="font-size: 11px; opacity: 0.8;">Etc Options</div>
+    <!-- Price Section - VRC -->
+    <section>
+        <div class="section-title" onclick="toggleSection('vrc-content', this)">
+            <div>VRC (게임용) <span class="eng">VRChat / PhysBone</span></div>
+            <span class="toggle-btn">클릭하여 토글</span>
         </div>
-
-        <div class="etc-grid">
-            <div class="etc-card hover-bounce">
-                <div class="icon">📦</div>
-                <div class="name">유니티 패키지 전달</div>
-                <div class="price">6.0 <span style="font-size:12px;">만원</span></div>
-            </div>
-            <div class="etc-card hover-bounce">
-                <div class="icon">🏷️</div>
-                <div class="name">방송/상업용</div>
-                <div class="price">+40%</div>
-            </div>
-            <div class="etc-card hover-bounce">
-                <div class="icon">🔄</div>
-                <div class="name">수정 1회 추가</div>
-                <div class="price">1.0 <span style="font-size:12px;">만원</span></div>
+        <div id="vrc-content" class="toggle-content">
+            <div class="price-grid">
+                <div class="price-card vrc">
+                    <div class="price-header">패키지 및 기본 작업</div>
+                    <div class="price-body">
+                        <div class="price-item"><span>전신 풀 패키지</span> <span class="price-value">7.0만</span></div>
+                        <div class="price-item"><span>기존 아바타 수정</span> <span class="price-value">4.5만</span></div>
+                    </div>
+                </div>
+                <div class="price-card vrc">
+                    <div class="price-header">추가 옵션</div>
+                    <div class="price-body">
+                        <div class="price-item"><span>옷 추가</span> <span class="price-value">4.5만</span></div>
+                        <div class="price-item"><span>헤어 추가</span> <span class="price-value">3.0만</span></div>
+                        <div class="price-item"><span>악세사리 추가</span> <span class="price-value">1.5만</span></div>
+                        <div class="price-item"><span>비전용 뚜따</span> <span class="price-value">7.0만</span></div>
+                        <div class="price-item"><span>텍스처 추가</span> <span class="price-value">0.7만</span></div>
+                        <div class="price-item"><span>온오프 추가</span> <span class="price-value">1.5만</span></div>
+                        <div class="price-item"><span>성형 쉐이프키</span> <span class="price-value">3.0만</span></div>
+                        <div class="price-item"><span>플라이 기능 추가</span> <span class="price-value">1.5만</span></div>
+                        <div class="price-item"><span>투명 기능 추가</span> <span class="price-value">3.0만</span></div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- 신청 양식 복사 섹션 -->
-        <div class="copy-section">
-            <h2 style="margin-bottom: 10px; font-weight: 900;">주문하시겠어요?</h2>
-            <p style="color: #888; margin-bottom: 25px; font-size: 14px;">아래 버튼을 눌러 신청 양식을 복사한 뒤,<br>아트머그 메시지로 보내주세요!</p>
-            <button class="copy-btn" onclick="copyForm()">📋 신청 양식 복사하기</button>
+    <!-- Price Section - Others -->
+    <section>
+        <div class="section-title" onclick="toggleSection('other-content', this)">
+            <div>기타 <span class="eng">Others</span></div>
+            <span class="toggle-btn">클릭하여 토글</span>
         </div>
+        <div id="other-content" class="toggle-content">
+            <div class="price-grid">
+                <div class="price-card" style="border-color: #eee;">
+                    <div class="price-header" style="background: #666;">기타 서비스</div>
+                    <div class="price-body">
+                        <div class="price-item"><span>유니티 패키지 전달</span> <span class="price-value">6.0만</span></div>
+                        <div class="price-item"><span>방송/상업용</span> <span class="price-value">+40% 추가</span></div>
+                        <div class="price-item"><span>수정 1회 추가</span> <span class="price-value">1.0만</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Work Environment -->
+    <section id="environment">
+        <div class="section-title">작업환경 <span class="eng">Work Environment</span></div>
+        <div class="work-env-grid">
+            <div class="env-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender" class="env-icon">
+                <div class="env-info"><strong>Blender</strong><small>3D 모델링 & 리깅</small></div>
+            </div>
+            <div class="env-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Unity_Black_icon.svg" alt="Unity" class="env-icon">
+                <div class="env-info"><strong>Unity</strong><small>아바타 세팅 & SDK</small></div>
+            </div>
+            <div class="env-item">
+                <img src="https://lilxyzw.github.io/lilToon/images/logo.svg" alt="Liltoon" class="env-icon">
+                <div class="env-info"><strong>Liltoon</strong><small>기본 사용</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Copy Button -->
+    <div class="copy-section">
+        <p style="margin-bottom: 20px; color: #777; font-weight: 700;">주문하시려면 아래 버튼을 눌러 양식을 복사해주세요!</p>
+        <button class="copy-btn" onclick="copyTemplate()">📋 신청 양식 복사하기</button>
     </div>
+</div>
 
-    <!-- 푸터 -->
-    <footer class="footer">
-        <p style="font-weight: 700; font-size: 20px; margin-bottom: 10px;">감사합니다!</p>
-        <p style="font-size: 14px; opacity: 0.8;">아트머그 문의로 궁금한점 편하게 질문해주세요.</p>
-    </footer>
+<footer class="footer">
+    <h2>의뢰해 주셔서 감사합니다!</h2>
+    <p>모든 작업은 최선을 다해 진행됩니다. 아트머그 문의/신청 부탁드려요.</p>
+</footer>
 
-    <div id="toast">신청 양식이 클립보드에 복사되었습니다!</div>
+<div id="toast">신청 양식이 클립보드에 복사되었습니다!</div>
 
-    <script>
-        function copyForm() {
-            const formText = `[커미션 신청 양식]
-1. 닉네임/입금자명: 
+<script>
+    function toggleSection(id, header) {
+        const content = document.getElementById(id);
+        const btn = header.querySelector('.toggle-btn');
+        
+        if (content.classList.contains('collapsed')) {
+            content.classList.remove('collapsed');
+            btn.innerText = '클릭하여 접기';
+            btn.style.background = '#ffe5eb';
+        } else {
+            content.classList.add('collapsed');
+            btn.innerText = '클릭하여 펼치기';
+            btn.style.background = '#fff0f3';
+        }
+    }
+
+    function copyTemplate() {
+        const template = `[커미션 신청 양식]
+1. 신청자 닉네임: 
 2. 신청 타입 (VSF/VRC): 
-3. 아바타 종류 (부스 링크 등): 
+3. 아바타 이름/링크: 
 4. 추가 옵션: 
 5. 기타 요청사항: `;
+        
+        navigator.clipboard.writeText(template).then(() => {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        });
+    }
+</script>
 
-            navigator.clipboard.writeText(formText).then(() => {
-                const toast = document.getElementById('toast');
-                toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 2000);
-            }).catch(err => {
-                alert('복사에 실패했습니다. 직접 복사해 주세요!');
-            });
-        }
-    </script>
 </body>
 </html>
