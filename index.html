@@ -572,6 +572,27 @@
         });
     }
 </script>
+<script>
+    // 아트머그 '내용 더보기' 강제 해제 및 높이 자동 조절 스크립트
+    window.onload = function() {
+        try {
+            // 1. 부모 창(아트머그)의 '내용 더보기' 버튼과 가림막 제거
+            const parentDoc = window.parent.document;
+            const moreBtn = parentDoc.querySelector('.btn_content_more');
+            const contentGradient = parentDoc.querySelector('.content_gradient');
+            const contentBody = parentDoc.querySelector('.content_body');
 
+            if (moreBtn) moreBtn.style.display = 'none'; // 버튼 숨기기
+            if (contentGradient) contentGradient.style.display = 'none'; // 그라데이션 가림막 숨기기
+            if (contentBody) {
+                contentBody.style.height = 'auto'; // 높이 제한 해제
+                contentBody.style.maxHeight = 'none'; // 최대 높이 제한 해제
+                contentBody.style.overflow = 'visible'; // 넘치는 내용 표시
+            }
+        } catch (e) {
+            console.log("외부 도메인 보안 정책으로 인해 부모 페이지 직접 수정이 제한될 수 있습니다.");
+        }
+    };
+</script>
 </body>
 </html>
