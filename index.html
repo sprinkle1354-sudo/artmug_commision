@@ -126,15 +126,33 @@
             list-style: none;
         }
 
+        /* 기존 .must-read-item 수정 및 배지 스타일 추가 */
         .must-read-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center; /* 세로 중앙 정렬 */
             margin-bottom: 15px;
             padding: 18px;
             background: var(--light-pink);
             border-radius: 20px;
-            transition: 0.3s;
+            position: relative;
         }
+
+        .important-badge {
+            background-color: #ffb3c1; /* 파스텔 핑크 */
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 900;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto; /* 우측 끝으로 밀기 */
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(255, 179, 193, 0.3);
+        }
+
 
         .must-read-item:hover {
             background: #ffe5eb;
@@ -386,7 +404,8 @@
             </li>
             <li class="must-read-item">
                 <span class="must-read-number">2</span>
-                <div>기본 수정 횟수는 2회입니다. (중요)</div>
+                <div style="flex-grow: 1;">기본 수정 횟수는 2회입니다.</div>
+                <div class="important-badge">중요</div>
             </li>
             <li class="must-read-item">
                 <span class="must-read-number">3</span>
@@ -394,7 +413,10 @@
             </li>
             <li class="must-read-item">
                 <span class="must-read-number">4</span>
-                <div>컨펌과 수정횟수는 별개입니다! - 컨펌은 횟수제한 없습니다</div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <div style="font-weight: 700;">컨펌과 수정횟수는 별개입니다!</div>
+                    <div style="font-size: 0.9rem; color: #ff4d6d; font-weight: 500;"> └ 컨펌은 횟수제한 없습니다.</div>
+                </div>
             </li>
             <li class="must-read-item">
                 <span class="must-read-number">5</span>
@@ -404,15 +426,19 @@
                     <div style="font-size: 0.9rem; color: #ff4d6d; font-weight: 500;"> └ 미보유 상품은 부스 기프트로 주셔야 합니다.</div>
                 </div>
             </li>
-
             <li class="must-read-item">
                 <span class="must-read-number">6</span>
-                <div>작업 종류후 2주후 커미션 파일 삭제합니다. - 2주내 재신청시 기본금액 X</div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <div style="font-weight: 700;">작업 종료후 2주후 커미션 파일 삭제합니다.</div>
+                    <div style="font-size: 0.9rem; color: #ff4d6d; font-weight: 500;"> └ 2주내 재신청시 기본금액 X</div>
+                </div>
             </li>
             <li class="must-read-item">
                 <span class="must-read-number">7</span>
-                <div>아바타 및 파츠의 상업적/비상업적 부분을 꼭! 확인해주세요. (중요)</div>
+                <div style="flex-grow: 1;">아바타 및 파츠의 상업적/비상업적 부분을 꼭! 확인해주세요.</div>
+                <div class="important-badge">중요</div>
             </li>
+
             <li class="must-read-item">
                 <span class="must-read-number">8</span>
                 <div>필독사항을 읽지않고 생긴 불이익은 책임지지않습니다.</div>
