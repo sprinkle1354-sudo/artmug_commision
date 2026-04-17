@@ -584,19 +584,39 @@
     }
 
     function copyTemplate() {
-        const template = `[커미션 신청 양식]
-1. 신청자 닉네임: 
-2. 신청 타입 (VSF/VRC): 
-3. 아바타 이름/링크: 
-4. 추가 옵션: 
-5. 기타 요청사항: `;
-        
-        navigator.clipboard.writeText(template).then(() => {
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-        });
+    const template = `[커미션 신청 양식]\n1. 신청자 닉네임: \n2. 신청 타입 (VSF/VRC): \n3. 아바타 이름/링크: \n4. 추가 옵션: \n5. 기타 요청사항: `;
+    
+    // 1단계: 최신 방식 시도
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(template).then(() => { showToast(); })
+        .catch(() => { fallbackCopy(template); });
+    } else {
+        // 2단계: 보안 환경/구형 방식 시도 (아트머그 최적화)
+        fallbackCopy(template);
     }
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed"; textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus(); textArea.select();
+    try {
+        document.execCommand('copy');
+        showToast();
+    } catch (err) {
+        alert('복사를 지원하지 않는 환경입니다. 직접 복사해 주세요.');
+    }
+    document.body.removeChild(textArea);
+}
+
+function showToast() {
+    const toast = document.getElementById("toast");
+    toast.className = "show";
+    setTimeout(() => { toast.className = ""; }, 3000);
+}
+
 </script>
 <script>
     // 아트머그 '내용 더보기' 강제 해제 및 높이 자동 조절 스크립트
@@ -619,6 +639,27 @@
             console.log("외부 도메인 보안 정책으로 인해 부모 페이지 직접 수정이 제한될 수 있습니다.");
         }
     };
+
+    /* 아트머그 시스템 틀 강제 확장 스타일 */
+    html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    }
+
+    /* 아트머그의 가림막과 버튼을 강제로 숨기는 시도 */
+    .content_gradient, .btn_content_more {
+        display: none !important;
+        height: 0 !important;
+        visibility: hidden !important;
+    }
+
+    .content_body {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
 </script>
 </body>
 </html>
